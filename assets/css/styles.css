@@ -88,16 +88,51 @@ img {
 
 /*=============== THEME ===============*/
 /*========== Variables Dark theme ==========*/
+body.dark-theme{
+  --bg-color: hsl(220, 18%, 13%);
+  --bg-color-light: hsl(220, 18%, 23%);
+  --title-color: hsl(220, 8%, 95%);
+  --text-color: hsl(220, 8%, 65%);
+  --body-color: hsl(220, 18%, 18%);
+  --container-color: hsl(210, 18%, 21%);
 
+}
 
 /*========== Button Dark/Light ==========*/
-
+.change-theme{
+  color: var(--title-color);
+  font-size: 1.125rem;
+  cursor: pointer;
+}
 
 /*========== 
     Color changes in some parts of 
     the website, in dark theme 
 ==========*/
+.dark-theme .scroll-header{
+  box-shadow: 0 2px 8px hsla(220, 18%, 86%, .3);
+}
 
+.dark-theme .nav__menu{
+  background-color: var(--container-color);
+}
+
+.dark-theme .nav__menu, 
+.dark-theme .scrollup {
+box-shadow: 0 4px 8px hsla(220, 18%, 8%, .3);
+}
+
+.dark-theme::webkit-scrollbar{
+  background-color: hsl(220, 18%, 15%);
+}
+
+.dark-theme::webkit-scrollbar-thumb{
+  background-color: hsl(220, 18%, 25%);
+}
+
+.dark-theme::webkit-scrollbar-thumb:hover{
+  background-color: hsl(220, 18%, 35%);
+}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
@@ -160,6 +195,7 @@ img {
     margin: 0 auto;
     padding: 1.25rem 2.8rem;
     border-radius: 0.5rem;
+    transition: .4s; /*For animation dark mode*/
   }
   .nav__list {
     display: flex;
@@ -188,12 +224,15 @@ align-items: center;
 }
 
 /* Active link */
-
+.active-link{
+  color: var(--title-color);
+}
 
 /*=============== HOME ===============*/
 .home {
 background-color: var(--bg-color);
 overflow: hidden;
+transition: .4s; /*For animation dark mode*/
 }
 
 .home__container {
@@ -297,6 +336,7 @@ position: relative;
 .collection{
   background-color: var(--bg-color-light);
   overflow: hidden;
+  transition: .4s; /*For animation dark mode*/
 }
 
 .collection__container{
@@ -480,17 +520,122 @@ position: relative;
 }
 
 /*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar{
+  width: .6rem;
+  border-radius: .5rem;
+  background-color: hsl(220, 8%, 76%);
+}
 
+::-webkit-scrollbar-thumb{
+  background-color: hsl(220, 8%, 64%);
+  border-radius: .5rem;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(220, 8%, 54%);
+}
 
 /*=============== SCROLL UP ===============*/
+.scrollup{
+  position: fixed;
+  right: 1rem;
+  bottom: -30%;
+  background-color: var(--container-color);
+  box-shadow: 0 8px 12px hsla(220, 18%, 40%, .15);
+  display: inline-flex;
+  padding: .35rem;
+  color: var(--title-color);
+  font-size: 1.1rem;
+  z-index: var(--z-tooltip);
+  transition: .3s;
+}
 
+.scrollup:hover{
+  transform: translateY(-.25rem);
+}
 
 /* Show Scroll Up*/
-
+.show-scroll{
+  bottom: 7.5rem;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
+@media screen and (max-width: 340px) {
+  .container{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 
+  .footer__content{
+    grid-template-columns: max-content;
+    row-gap: 2rem;
+  }
+
+  .nav__menu{
+    padding: 1rem 1.5rem;
+  }
+
+  .home__container{
+    padding: 2rem 0 1rem;
+    row-gap: 6rem;
+  }
+
+  .home__description{
+    font-size: var(--small-font-size);
+  }
+
+  .home__images{
+    width: 248px;
+  }
+
+  .home__images img:nth-child(1){
+    width: 180px;
+    top: -7rem;
+  }
+
+  .home__images img:nth-child(2){
+    width: 150px;
+  }
+
+  .new__img{
+    width: 230px;
+  }
+
+  .new__link{
+    padding-right: 0;
+  }
+
+  .collection__explore:nth-child(1),
+  .collection__explore:nth-child(2){
+    position: initial;
+    grid-template-columns: 230px;
+    row-gap: 2rem;
+    margin: 0;
+  }
+
+  .collection__container{
+    height: initial;
+    row-gap: 3rem;
+  }
+
+  .collection__dat-men{
+    margin-top: 0;
+  }
+
+  .collection__data-women{
+    margin-bottom: 0;
+  }
+
+  .products__card{
+    width: 230px;
+  }
+
+  .brand__container{
+    grid-template-columns: repeat(2, 100px);
+    row-gap: .5rem;
+  }
+}
 
 /* For medium devices */
 
